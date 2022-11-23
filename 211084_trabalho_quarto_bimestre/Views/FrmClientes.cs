@@ -19,11 +19,12 @@ namespace _211084_trabalho_quarto_bimestre.Views
         public FrmClientes()
         {
             InitializeComponent();
+            carregarGrid("");
         }
 
         private void btn_iniciar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text == "") return;
+            if (txtNome.Text == String.Empty) return;
 
             cl = new Clientes()
             {
@@ -119,25 +120,37 @@ namespace _211084_trabalho_quarto_bimestre.Views
 
         private void btn_alterar_Click(object sender, EventArgs e)
         {
+            string a;
+            
+            if (dgv_clientes.Rows.Count <= 1) return;
+            a = dgv_clientes.CurrentRow.Cells[0].Value.ToString();
 
-            if (txtId.Text == "") return;
+            if (a == "") return;
 
-            cl = new Clientes()
+            if (MessageBox.Show("Deseja alterar o cadastro?", "alterar", MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question) == DialogResult.Yes)
+
             {
+                cl = new Clientes()
+                {
+                    Id = int.Parse(a),
+                    nome = txtNome.Text,
+                    idCidade = (int)cboCidades.SelectedValue,
+                    dataNasc = dataNasc.Value,
+                    renda = double.Parse(renda.Text),
+                    cpf = mskCPF.Text,
+                    foto = picFoto.ImageLocation,
+                    venda = chkVenda.Checked
 
-                Id = int.Parse(txtId.Text),
-                nome = txtNome.Text,
-                idCidade = (int)cboCidades.SelectedValue,
-                dataNasc = dataNasc.Value,
-                renda = double.Parse(renda.Text),
-                cpf = mskCPF.Text,
-                foto = picFoto.ImageLocation,
-                venda = chkVenda.Checked
-            };
-            cl.Alterar();
+                };
 
-            limpaControles();
-            carregarGrid("");
+                cl.Alterar();
+
+                limpaControles();
+                carregarGrid("");
+            }
+
+            
 
         }
 

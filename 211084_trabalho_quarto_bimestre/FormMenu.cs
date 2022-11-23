@@ -50,7 +50,7 @@ namespace _211084_trabalho_quarto_bimestre
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            FrmCidades form = new Frm();
+            FrmCidades form = new FrmCidades();
             form.Show();
         }
     }

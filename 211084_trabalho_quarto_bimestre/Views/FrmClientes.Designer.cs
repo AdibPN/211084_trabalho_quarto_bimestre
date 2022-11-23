@@ -385,6 +385,7 @@
             this.Controls.Add(this.label2);
             this.Name = "FrmClientes";
             this.Text = "FrmClientes";
+            this.Load += new System.EventHandler(this.FrmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picFoto)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

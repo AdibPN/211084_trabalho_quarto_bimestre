@@ -163,7 +163,6 @@
             this.txtUF.Name = "txtUF";
             this.txtUF.Size = new System.Drawing.Size(157, 20);
             this.txtUF.TabIndex = 21;
-            this.txtUF.TextChanged += new System.EventHandler(this.txtUF_TextChanged);
             // 
             // FrmCidades
             // 

@@ -17,6 +17,7 @@ namespace _211084_trabalho_quarto_bimestre.Views
         public FrmCidades()
         {
             InitializeComponent();
+            carregarGrid("");
         }
            
 
@@ -75,6 +76,7 @@ namespace _211084_trabalho_quarto_bimestre.Views
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             string a;
+            if (dgvCidades.Rows.Count <= 1) return;
             a = dgvCidades.CurrentRow.Cells[0].Value.ToString();
 
             if (a == "") return;
@@ -99,6 +101,8 @@ namespace _211084_trabalho_quarto_bimestre.Views
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             string a;
+            if (dgvCidades.Rows.Count <= 1) return;
+
             a = dgvCidades.CurrentRow.Cells[0].Value.ToString();
 
             if (a == "") return;
@@ -126,17 +130,12 @@ namespace _211084_trabalho_quarto_bimestre.Views
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-          
+            carregarGrid(txtPesquisa.Text);
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void txtUF_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

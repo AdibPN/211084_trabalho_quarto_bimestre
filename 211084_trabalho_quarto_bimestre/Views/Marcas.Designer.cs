@@ -76,7 +76,7 @@
             this.dgv_marcas.Name = "dgv_marcas";
             this.dgv_marcas.Size = new System.Drawing.Size(658, 151);
             this.dgv_marcas.TabIndex = 14;
-            this.dgv_marcas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_marcas_CellContentClick_1);
+            this.dgv_marcas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selecionarLinha);
             // 
             // txtPesquisa
             // 
@@ -93,9 +93,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(6, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(288, 20);
+            this.label4.Size = new System.Drawing.Size(285, 20);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Digite o nome da cidade para pesquisa:";
+            this.label4.Text = "Digite o nome da marca para pesquisa:";
             // 
             // txtNome
             // 
