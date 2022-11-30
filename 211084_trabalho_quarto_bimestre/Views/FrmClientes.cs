@@ -24,11 +24,11 @@ namespace _211084_trabalho_quarto_bimestre.Views
 
         private void btn_iniciar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text == String.Empty) return;
+            if (nome.Text == String.Empty) return;
 
             cl = new Clientes()
             {
-                nome = txtNome.Text,
+                nome = nome.Text,
                 idCidade = (int)cboCidades.SelectedValue,
                 dataNasc = dataNasc.Value,
                 renda = double.Parse(renda.Text),
@@ -189,6 +189,31 @@ namespace _211084_trabalho_quarto_bimestre.Views
         private void btn_fechar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void nome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboCidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void renda_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUF_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

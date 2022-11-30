@@ -81,6 +81,7 @@
             this.renda.Name = "renda";
             this.renda.Size = new System.Drawing.Size(260, 20);
             this.renda.TabIndex = 61;
+            this.renda.TextChanged += new System.EventHandler(this.renda_TextChanged);
             // 
             // label7
             // 
@@ -135,6 +136,7 @@
             this.cboCidades.Name = "cboCidades";
             this.cboCidades.Size = new System.Drawing.Size(260, 21);
             this.cboCidades.TabIndex = 55;
+            this.cboCidades.SelectedIndexChanged += new System.EventHandler(this.cboCidades_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -253,6 +255,7 @@
             this.nome.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.nome.Size = new System.Drawing.Size(260, 20);
             this.nome.TabIndex = 64;
+            this.nome.TextChanged += new System.EventHandler(this.nome_TextChanged);
             // 
             // txtUF
             // 
@@ -261,6 +264,7 @@
             this.txtUF.Name = "txtUF";
             this.txtUF.Size = new System.Drawing.Size(160, 20);
             this.txtUF.TabIndex = 65;
+            this.txtUF.TextChanged += new System.EventHandler(this.txtUF_TextChanged);
             // 
             // label9
             // 
@@ -338,6 +342,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 73;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // tx
             // 

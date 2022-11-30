@@ -1,24 +1,26 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
 using System.Data;
 using System.Linq;
-using System.Windows.Forms;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace _211084_trabalho_quarto_bimestre.Models
 {
-    internal class Clientes
+    internal class Produto
     {
         public int Id { get; set; }
-        public string nome { get; set; }    
-        public int idCidade { get; set; }
-        public DateTime dataNasc { get; set; }
-        public double renda { get; set; }
-        public string cpf { get; set; }
-        public string foto { get; set; }    
-        public bool venda { get; set; }
+        public string descricao { get; set; }
+        public int idCategoria { get; set; }
+        public string nome { get; set; }
+        public int idMarca { get; set; }
+        public string estoque { get; set; }
+        public string valorVenda { get; set; }
+        public string foto { get; set; }
+
+
 
         public void Incluir()
         {
@@ -26,15 +28,15 @@ namespace _211084_trabalho_quarto_bimestre.Models
             {
                 Banco.Conexao.Open();
                 Banco.Comando = new MySqlCommand
-                    ("INSERT INTO Clientes (nome, idCidade, dataNasc, renda, cpf, foto, venda)" +
-                    "VALUES (@nome, @idCidade, @dataNasc, @renda, @cpf, @foto, @venda)", Banco.Conexao);
+                    ("INSERT INTO Produto (nome, descricao, idCategoria, idMarca, estoque, valorVenda, foto)" +
+                    "VALUES (@nome, @descricao, @idCategoria, @idMarca, @estoque, @valorVenda, @foto)", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@nome", nome);
-                Banco.Comando.Parameters.AddWithValue("@idCidade", idCidade);
-                Banco.Comando.Parameters.AddWithValue("@dataNasc", dataNasc);
-                Banco.Comando.Parameters.AddWithValue("@renda", renda);
-                Banco.Comando.Parameters.AddWithValue("@cpf", cpf);
+                Banco.Comando.Parameters.AddWithValue("@descricao", descricao);
+                Banco.Comando.Parameters.AddWithValue("@idCategoria", idCategoria);
+                Banco.Comando.Parameters.AddWithValue("@idMarca", idMarca);
+                Banco.Comando.Parameters.AddWithValue("@estoque", estoque);
+                Banco.Comando.Parameters.AddWithValue("@valorVenda", valorVenda);
                 Banco.Comando.Parameters.AddWithValue("@foto", foto);
-                Banco.Comando.Parameters.AddWithValue("@venda", venda);
                 Banco.Comando.ExecuteNonQuery();
                 Banco.Conexao.Close();
 
@@ -46,20 +48,21 @@ namespace _211084_trabalho_quarto_bimestre.Models
 
             }
         }
+
         public void Alterar()
         {
             try
             {
                 Banco.Conexao.Open();
                 Banco.Comando = new MySqlCommand
-                    ("UPDATE clientes SET nome = @nome, idCidade = @idCidade, dataNasc = @dataNasc, renda = @renda, cpf = @cpf, foto = @foto, venda = @venda where id = @id" , Banco.Conexao);
+                    ("UPDATE Produto SET nome = @nome, descricao = @descricao, idCategoria = @idCategoria, idMarca = @idMarca, estoque = @estoque, valorVenda = @valorVenda, foto = @foto", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@nome", nome);
-                Banco.Comando.Parameters.AddWithValue("@idCidade", idCidade);
-                Banco.Comando.Parameters.AddWithValue("@dataNasc", dataNasc);
-                Banco.Comando.Parameters.AddWithValue("@renda", renda);
-                Banco.Comando.Parameters.AddWithValue("@cpf", cpf);
+                Banco.Comando.Parameters.AddWithValue("@descricao", descricao);
+                Banco.Comando.Parameters.AddWithValue("@idCategoria", idCategoria);
+                Banco.Comando.Parameters.AddWithValue("@idMarca", idMarca);
+                Banco.Comando.Parameters.AddWithValue("@estoque", estoque);
+                Banco.Comando.Parameters.AddWithValue("@valorVenda", valorVenda);
                 Banco.Comando.Parameters.AddWithValue("@foto", foto);
-                Banco.Comando.Parameters.AddWithValue("@venda", venda);
                 Banco.Comando.ExecuteNonQuery();
                 Banco.Conexao.Close();
 
@@ -70,7 +73,6 @@ namespace _211084_trabalho_quarto_bimestre.Models
                 MessageBox.Show(e.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
         }
 
         public void excluir()
@@ -78,16 +80,15 @@ namespace _211084_trabalho_quarto_bimestre.Models
             try
             {
                 Banco.Conexao.Open();
-                Banco.Comando = new MySqlCommand("delete from clientes where Id = @Id", Banco.Conexao);
+                Banco.Comando = new MySqlCommand("delete from Produto where Id = @Id", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@Id", Id);
                 Banco.Comando.ExecuteNonQuery();
                 Banco.Conexao.Close();
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -95,10 +96,10 @@ namespace _211084_trabalho_quarto_bimestre.Models
         {
             try
             {
-                Banco.Comando = new MySqlCommand("SELECT cl.*, ci.nome cidade, " +
-                    "ci.uf FROM Clientes cl inner join  Cidades ci on (ci.id = cl.idCidade)"+
-                    "where cl.nome like ?Nome order by cl.nome", Banco.Conexao);
-                Banco.Comando.Parameters.AddWithValue("@Nome", nome + "%");
+                Banco.Comando = new MySqlCommand("SELECT p.*, m.marca, c.categoria FROM " +
+                    "Produtos p inner join Marcas m on (m.id = p.idCategoria)" +
+                    "where p.descricao like @descricao order by p.descricao", Banco.Conexao);
+                Banco.Comando.Parameters.AddWithValue("@descricao", descricao + "%");
                 Banco.Adaptador = new MySqlDataAdapter(Banco.Comando);
                 Banco.dataTabela = new DataTable();
                 Banco.Adaptador.Fill(Banco.dataTabela);
@@ -110,7 +111,5 @@ namespace _211084_trabalho_quarto_bimestre.Models
                 return null;
             }
         }
-        
     }
-    
 }

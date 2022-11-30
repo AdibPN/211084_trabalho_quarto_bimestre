@@ -49,8 +49,15 @@ namespace _211084_trabalho_quarto_bimestre
 
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FormCategoria form = new FormCategoria();
+            form.Show();
 
-            FrmCidades form = new FrmCidades();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FrmProdutos form = new FrmProdutos();
             form.Show();
         }
     }

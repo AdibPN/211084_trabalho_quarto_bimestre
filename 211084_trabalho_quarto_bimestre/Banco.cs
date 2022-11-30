@@ -82,12 +82,22 @@ namespace _211084_trabalho_quarto_bimestre
                     "venda boolean)", Conexao);
                 Comando.ExecuteNonQuery();
 
+                Comando = new MySqlCommand(
+                    @"CREATE TABLE IF NOT EXISTS Produto (
+                    Id integer auto_increment primary key,
+                    descricao char(40),
+                    idCategoria integer,
+                    idMarca integer,
+                    estoque decimal(10,3),
+                    valorVenda decimal(10,2),
+                    foto varchar(100))", Conexao);
+                Comando.ExecuteNonQuery();
 
                 FecharConexao();
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.StackTrace, e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
