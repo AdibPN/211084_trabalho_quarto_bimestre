@@ -66,7 +66,6 @@
             this.tx.Size = new System.Drawing.Size(49, 13);
             this.tx.TabIndex = 96;
             this.tx.Text = "CÓDIGO";
-           
             // 
             // txtId
             // 
@@ -171,7 +170,6 @@
             this.label8.Size = new System.Drawing.Size(82, 20);
             this.label8.TabIndex = 85;
             this.label8.Text = "Categoria:";
-            
             // 
             // descricao
             // 
@@ -198,7 +196,6 @@
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(260, 21);
             this.cboCategoria.TabIndex = 77;
-            
             // 
             // picFoto
             // 
@@ -207,6 +204,7 @@
             this.picFoto.Size = new System.Drawing.Size(187, 190);
             this.picFoto.TabIndex = 76;
             this.picFoto.TabStop = false;
+            this.picFoto.Click += new System.EventHandler(this.picFoto_Click);
             // 
             // groupBox1
             // 

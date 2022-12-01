@@ -36,6 +36,7 @@ namespace _211084_trabalho_quarto_bimestre.Views
                 nome = nome.Text,
                 idCategoria = (int)cboCategoria.SelectedValue,
                 idMarca = (int)cboMarca.SelectedValue,
+                
                 valorVenda = txtVenda.Text,
                 estoque = txtEstoque.Text,
                 foto = picFoto.ImageLocation,
@@ -135,6 +136,11 @@ namespace _211084_trabalho_quarto_bimestre.Views
                 txtEstoque.Text = dgv_produto.CurrentRow.Cells["estoque"].Value.ToString();
 
             }
+        }
+
+        private void picFoto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

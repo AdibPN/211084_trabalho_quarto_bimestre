@@ -88,16 +88,6 @@ namespace _211084_trabalho_quarto_bimestre.Views
 
         }
 
-
-
-        private void picFoto_CLick(object sender, EventArgs e)
-        {
-            ofdArquivo.InitialDirectory = "D:/fotos/clientes/";
-            ofdArquivo.FileName = "";
-            ofdArquivo.ShowDialog();
-            picFoto.ImageLocation = ofdArquivo.FileName;
-        }
-
         private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv_clientes.RowCount > 0)
@@ -196,11 +186,6 @@ namespace _211084_trabalho_quarto_bimestre.Views
 
         }
 
-        private void cboCidades_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void renda_TextChanged(object sender, EventArgs e)
         {
 
@@ -214,6 +199,14 @@ namespace _211084_trabalho_quarto_bimestre.Views
         private void txtUF_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void picFoto_Click_1(object sender, EventArgs e)
+        {
+            ofdArquivo.InitialDirectory = "D:/fotos/clientes/";
+            ofdArquivo.FileName = "";
+            ofdArquivo.ShowDialog();
+            picFoto.ImageLocation = ofdArquivo.FileName;
         }
     }
 

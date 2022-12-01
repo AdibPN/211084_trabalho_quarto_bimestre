@@ -136,7 +136,6 @@
             this.cboCidades.Name = "cboCidades";
             this.cboCidades.Size = new System.Drawing.Size(260, 21);
             this.cboCidades.TabIndex = 55;
-            this.cboCidades.SelectedIndexChanged += new System.EventHandler(this.cboCidades_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -165,6 +164,7 @@
             this.picFoto.Size = new System.Drawing.Size(187, 190);
             this.picFoto.TabIndex = 51;
             this.picFoto.TabStop = false;
+            this.picFoto.Click += new System.EventHandler(this.picFoto_Click_1);
             // 
             // groupBox1
             // 
